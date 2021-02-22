@@ -11,6 +11,21 @@ trees = {
     {["x"] = 50,["y"] = 50,["size"]=20 },
     {["x"] = 100,["y"] = 100,["size"]=30 }
 }
+cirkleKolider = function (positionx,positiony,size,table)
+    for index, value in ipairs(table) do
+        if distansBetwen(positiony,positionx,table[index].x,table[index].y) < (size + table[index].size) then
+            print(distansBetwen(positiony,positionx,table[index].x,table[index].y))
+            print(size + table[index].size)
+            return true
+        end
+    end
+    return false
+end
+distansBetwen = function (firstX,firstY,sekonX,sekondY)
+    return math.sqrt(((firstX-sekonX)*(firstX-sekonX))+((firstY-sekondY)*(firstY-sekondY)))
+ 
+ end
+
     
     love.keypressed = function (key)
         --farmer key preses--
@@ -44,9 +59,10 @@ trees = {
 
 love.update = function (deltaTime)
     --farmer kolition och movment--
-    
-    farmer.positionX = farmer.positionX + (farmer.movmentX * deltaTime)
-    farmer.positionY = farmer.positionY + (farmer.movmentY * deltaTime)
+    if cirkleKolider((farmer.positionX + (farmer.movmentX * deltaTime)),(farmer.positionY + (farmer.movmentY * deltaTime)),farmer.farmerSize,trees) == false then
+        farmer.positionX = farmer.positionX + (farmer.movmentX * deltaTime)
+        farmer.positionY = farmer.positionY + (farmer.movmentY * deltaTime)
+    end
 end
 
 love.draw=function ()
