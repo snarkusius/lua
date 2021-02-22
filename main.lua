@@ -20,3 +20,24 @@ while x < 5
 do  x = x+1
     print(x)
 end
+print("Enter your name:")
+name = io.read()
+
+print("What's your favorite food?")
+food = io.read()
+
+print("Your name is " .. name .. " and your favorite food is " .. food .. ".")
+print(math.random(100))
+print(os.time())
+seed_number = os.time()
+math.randomseed(seed_number)
+print(math.random(100))
+list = {[0]= "hej0","hej","hej2","hej3"}
+print(#list)
+coins = {
+    ["half"] = "50 cents",
+    ["quarter"] = "25 cents",
+    ["dime"] = "10 cents",
+    ["nickel"] = "5 cents",
+    ["penny"] = "1 cent"
+  }
