@@ -1,0 +1,1 @@
+spelet och readme ligger under \spel\ball\
